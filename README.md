@@ -17,7 +17,7 @@ Este proyecto resuelve un problema real de compatibilidad: instalar Hermes Agent
 ## Arquitectura
 
 ```mermaid
-flowchart TD
+flowchart LR
     A[Mac - Host] --> B[Herdr<br/>Sesión persistente]
     B --> C[Docker Desktop]
     C --> D[Contenedor: hermes-agent<br/>Ubuntu 24.04]
