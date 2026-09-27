@@ -16,13 +16,20 @@ Este proyecto resuelve un problema real de compatibilidad: instalar Hermes Agent
 
 ## Arquitectura
 
-\`\`\`
-Mac (host)
-  └── Herdr (sesión persistente)
-        └── Docker Desktop
-              └── Contenedor: hermes-agent (Ubuntu 24.04)
-                    └── Hermes Agent → OpenRouter API → LLM
-\`\`\`
+```mermaid
+flowchart TD
+    A[Mac - Host] --> B[Herdr<br/>Sesión persistente]
+    B --> C[Docker Desktop]
+    C --> D[Contenedor: hermes-agent<br/>Ubuntu 24.04]
+    D --> E[Hermes Agent v0.21]
+    E --> F[OpenRouter API]
+    F --> G[LLM<br/>nvidia/nemotron-3]
+
+    style A fill:#2b2b2b,color:#fff
+    style D fill:#0db7ed,color:#fff
+    style F fill:#6366f1,color:#fff
+```
+
 
 ## Requisitos
 
