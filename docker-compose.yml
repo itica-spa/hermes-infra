@@ -1,0 +1,14 @@
+services:
+  hermes:
+    build: .
+    container_name: hermes-agent
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - hermes-data:/root/.hermes
+    stdin_open: true
+    tty: true
+
+volumes:
+  hermes-data:
