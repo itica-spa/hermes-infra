@@ -3,12 +3,18 @@ services:
     build: .
     container_name: hermes-agent
     restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:9119:9119"
     env_file:
       - .env
     volumes:
       - hermes-data:/root/.hermes
     stdin_open: true
     tty: true
+    command: >
+      bash -c "socat TCP-LISTEN:9119,fork,reuseaddr TCP:127.0.0.1:9118 &
+      exec hermes dashboard --port 9118 --no-open"
 
 volumes:
   hermes-data:
